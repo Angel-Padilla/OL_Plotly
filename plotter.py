@@ -29,6 +29,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='plot CSVs using a configuration file.')
     parser.add_argument('directory',help='an integer for the accumulator')
+    parser.add_argument('-s', '--show',action='store_true')
     args = parser.parse_args()
     
     #iterate over every file in the given directory, if is a CSV load into the plot and 
@@ -70,7 +71,7 @@ if __name__ == '__main__':
             fig.update_yaxes(title_text=_work.graph.get_plot_config()["yAxis"]["label"])
 
             #save html file
-            pio.write_html(fig, file="{0}/{1}.html".format(args.directory,filename), auto_open=True)
+            pio.write_html(fig, file="{0}/{1}.html".format(args.directory,filename), auto_open=args.show)
 
     #main()
     #fig = go.Figure(go.Scatter(x=[1, 2, 3, 4], y=[4, 3, 2, 1]))
