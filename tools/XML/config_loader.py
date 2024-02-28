@@ -17,11 +17,10 @@ def load_config_from_XML(ROOT:XML.ElementTree, obj:plot, file:str = "global") ->
 
     if PLOT_CONFIG == None:
         PLOT_CONFIG = ROOT.find("plot").find("global")
-        filename = "global-override" if PLOT_CONFIG.find("title").get("override").capitalize() == "True" else file
     #Create the dict holding the data to be set to the plot
     config:dict = {
         "file": filename,
-        "title": PLOT_CONFIG.findtext("title"),
+        "title": PLOT_CONFIG.findtext("title") if PLOT_CONFIG.find("title").get("override").capitalize()  =="True" else filename,
         "xAxis": {
                 "label": PLOT_CONFIG.find("Axis").find("x").findtext("label"),
                 "range": [bound for bound in PLOT_CONFIG.find("Axis").find("x").find("range").attrib.values()],

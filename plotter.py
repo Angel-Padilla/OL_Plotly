@@ -63,7 +63,7 @@ if __name__ == '__main__':
                                          line=_trace_line,
                                          ))
             #set plot title
-            figure_title = _plot_config["title"] if _plot_config["file"] == "global-override" else filename
+            figure_title = _plot_config["title"]
             fig.update_layout(title_text=figure_title)
             #set main axis labels
             fig.update_xaxes(title_text=_plot_config["xAxis"]["label"])
