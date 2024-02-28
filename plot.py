@@ -14,7 +14,7 @@ DEFAULT_TRACE_CONFIG:dict = {
 }
 
 DEFAULT_PLOT_CONFIG:dict = {
-    "file":"global",
+    "file":"global-override",
     "title":"plot",
     "xAxis":{
             "label": "X Axis",

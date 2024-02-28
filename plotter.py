@@ -36,10 +36,7 @@ if __name__ == '__main__':
     #generate the graph
 
     filePath = os.path.join(args.directory,os.getenv("FILE_NAME"))
-    # filePath = os.path.join(os.curdir,os.getenv("FILE_NAME"))
-    # filePath = os.path.join("./example/test",os.getenv("FILE_NAME"))
     separator = os.getenv("PATH_SEPARATOR")
-    print(filePath)
     XML_CONFIG:XML.ElementTree =  parse_XML_config_file(filePath) #test
     _work:work = work()
 
@@ -53,6 +50,7 @@ if __name__ == '__main__':
             _work.graph.clear_pĺot()
             load_config_from_XML(XML_CONFIG,_work.graph, filename)
             load_csv(file.path)
+            _plot_config = _work.graph.get_plot_config()
             #iterate over the traces and load the data
             for _trace in _work.graph.traces:
                 trace_config = _trace.get_trace_config()
@@ -65,22 +63,12 @@ if __name__ == '__main__':
                                          line=_trace_line,
                                          ))
             #set plot title
-            fig.update_layout(title_text=_work.graph.get_plot_config()["title"])
+            figure_title = _plot_config["title"] if _plot_config["file"] == "global-override" else filename
+            fig.update_layout(title_text=figure_title)
             #set main axis labels
-            fig.update_xaxes(title_text=_work.graph.get_plot_config()["xAxis"]["label"])
-            fig.update_yaxes(title_text=_work.graph.get_plot_config()["yAxis"]["label"])
+            fig.update_xaxes(title_text=_plot_config["xAxis"]["label"])
+            fig.update_yaxes(title_text=_plot_config["yAxis"]["label"])
 
             #save html file
             pio.write_html(fig, file="{0}/{1}.html".format(args.directory,filename), auto_open=args.show)
-
-    #main()
-    #fig = go.Figure(go.Scatter(x=[1, 2, 3, 4], y=[4, 3, 2, 1]))
-    #fig.update_layout(title_text='hello world')
-    #pio.write_html(fig, file='hello_world.html', auto_open=True)
-    #pio.show(fig)
-    # load_config_from_XML(XML_CONFIG,_work.graph)
-    # _work.graph.clear_pĺot()
-    # load_config_from_XML(XML_CONFIG,_work.graph, "nameOfFIle1")
-    # _work.graph.clear_pĺot()
-    # load_config_from_XML(XML_CONFIG,_work.graph,"nameOfFIle2")
     print("done")
