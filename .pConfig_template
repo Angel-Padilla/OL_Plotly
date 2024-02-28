@@ -7,7 +7,7 @@ standalone = "yes"
 <!-- config file is written using and XML schema as follows:
      1. a <cleanup> element
 -->
-<config s>
+<config>
     <cleanup save="update" | "new">
         <columns type="keep" | "remove", headers="CommaSeparatedHeaderNamesToAffect" | "__all__">
         <file>nameFileAffected | __all__</file>
@@ -25,41 +25,28 @@ standalone = "yes"
             <Axis>
                 <x>
                     <label>xLabel</label>
-                    <range>
-                        <min>minValue | __auto__</min>
-                        <max>maxValue | __auto__</max>
-                    </range>
+                    <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     <auxAxis active="true" | "false">
                         <label>xLabel</label>
-                        <range>
-                            <min>minValue | __auto__</min>
-                            <max>maxValue | __auto__</max>
-                        </range>
+                        <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
                 </x>
                 <y>
                     <label>yLabel</label>
-                    <range>
-                        <min>minValue | __auto__</min>
-                        <max>maxValue | __auto__</max>
-                    </range>
+                    <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     <auxAxis active="true" | "false">
                         <label>yLabel</label>
-                        <range>
-                            <min>minValue | __auto__</min>
-                            <max>maxValue | __auto__</max>
-                        </range>
+                        <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
                 </y>
             </Axis>
-            <trace name="HeaderName", type="typeOfTrace">   
-                <line>solid | dashed | __auto__</line>      <!--auto randomizes sets solid line-->
+            <trace name="HeaderName", type="typeOfTrace" over="HeaderName">   
+                <style>solid | dashed | __auto__</style>      <!--auto randomizes sets solid line-->
                 <color>colorInHex | __auto__</color>        <!--auto randomizes the color-->
                 <marker>markerType | __auto__</marker>      <!--auto randomizes the marker-->
                 <width>Width | __auto__</width>             <!--auto set the width to 1-->
                 <legend>traceLegend | __auto__</legend>     <!--auto sets the legend to the name of the column header-->
-                <xReference>reference</xReference>          <!--plots the trace referenced to the reference xAxis-->
-                <yReference>reference</yReference>          <!--plots the trace referenced to the reference yAxis-->
+                <reference x="main" | "aux" y="main" | "aux"/>               <!--plots the trace referenced to the reference xAxis-->
             </trace>
             ...
         </global>
@@ -68,41 +55,28 @@ standalone = "yes"
             <Axis>
                 <x>
                     <label>xLabel</label>
-                    <range>
-                        <min>minValue | __auto__</min>
-                        <max>maxValue | __auto__</max>
-                    </range>
+                    <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     <auxAxis active="true" | "false">
                         <label>xLabel</label>
-                        <range>
-                            <min>minValue | __auto__</min>
-                            <max>maxValue | __auto__</max>
-                        </range>
+                        <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
                 </x>
                 <y>
                     <label>yLabel</label>
-                    <range>
-                        <min>minValue | __auto__</min>
-                        <max>maxValue | __auto__</max>
-                    </range>
+                    <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     <auxAxis active="true" | "false">
                         <label>yLabel</label>
-                        <range>
-                            <min>minValue | __auto__</min>
-                            <max>maxValue | __auto__</max>
-                        </range>
+                        <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
                 </y>
             </Axis>
-            <trace name="HeaderName", type="typeOfTrace">   
-                <line>solid | dashed | __auto__</line>      <!--auto randomizes sets solid line-->
+            <trace name="HeaderName", type="typeOfTrace" over="HeaderName">
+                <style>solid | dashed | __auto__</style>      <!--auto randomizes sets solid line-->
                 <color>colorInHex | __auto__</color>        <!--auto randomizes the color-->
                 <marker>markerType | __auto__</marker>      <!--auto randomizes the marker-->
                 <width>Width | __auto__</width>             <!--auto set the width to 1-->
                 <legend>traceLegend | __auto__</legend>     <!--auto sets the legend to the name of the column header-->
-                <xReference>reference</xReference>          <!--plots the trace referenced to the reference xAxis-->
-                <yReference>reference</yReference>          <!--plots the trace referenced to the reference yAxis-->
+                <reference x="main" | "aux" y="main" | "aux"/>            <!--plots the trace referenced to the reference xAxis-->
             </trace>
             ...
         </file>
