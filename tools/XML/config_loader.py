@@ -26,7 +26,6 @@ def load_config_from_XML(ROOT:XML.ElementTree, obj:plot, file:str = "global") ->
                 "range": [bound for bound in PLOT_CONFIG.find("Axis").find("x").find("range").attrib.values()],
                 "aux":
                     {
-                        "active": PLOT_CONFIG.find("Axis").find("x").find("auxAxis").get("active").capitalize() == "True",
                         "label": PLOT_CONFIG.find("Axis").find("x").find("auxAxis").findtext("label"),
                         "range":[bound for bound in PLOT_CONFIG.find("Axis").find("x").find("auxAxis").find("range").attrib.values()],
                     }
@@ -36,7 +35,6 @@ def load_config_from_XML(ROOT:XML.ElementTree, obj:plot, file:str = "global") ->
                 "range": [bound for bound in PLOT_CONFIG.find("Axis").find("y").find("range").attrib.values()],
                 "aux":
                     {
-                        "active": PLOT_CONFIG.find("Axis").find("y").find("auxAxis").get("active").capitalize() == "True",
                         "label": PLOT_CONFIG.find("Axis").find("y").find("auxAxis").findtext("label"),
                         "range":[bound for bound in PLOT_CONFIG.find("Axis").find("y").find("auxAxis").find("range").attrib.values()],
                     }

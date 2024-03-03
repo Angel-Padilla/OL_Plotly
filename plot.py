@@ -21,7 +21,6 @@ DEFAULT_PLOT_CONFIG:dict = {
             "range":[None, None],
             "aux":
                 {
-                    "active": False,
                     "label": "X Axis 2",
                     "range":[None, None],
                 }
@@ -31,7 +30,6 @@ DEFAULT_PLOT_CONFIG:dict = {
             "range":[None, None],
             "aux":
                 {
-                    "active": False,
                     "label": "Y Axis 2",
                     "range":[None, None],
                 }

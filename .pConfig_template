@@ -26,7 +26,7 @@ standalone = "yes"
                 <x>
                     <label>xLabel</label>
                     <range min="minValue" | "auto" max="maxValue" | "auto"/>
-                    <auxAxis active="true" | "false">
+                    <auxAxis>
                         <label>xLabel</label>
                         <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
@@ -34,7 +34,7 @@ standalone = "yes"
                 <y>
                     <label>yLabel</label>
                     <range min="minValue" | "auto" max="maxValue" | "auto"/>
-                    <auxAxis active="true" | "false">
+                    <auxAxis>
                         <label>yLabel</label>
                         <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
@@ -56,7 +56,7 @@ standalone = "yes"
                 <x>
                     <label>xLabel</label>
                     <range min="minValue" | "auto" max="maxValue" | "auto"/>
-                    <auxAxis active="true" | "false">
+                    <auxAxis>
                         <label>xLabel</label>
                         <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
@@ -64,7 +64,7 @@ standalone = "yes"
                 <y>
                     <label>yLabel</label>
                     <range min="minValue" | "auto" max="maxValue" | "auto"/>
-                    <auxAxis active="true" | "false">
+                    <auxAxis>
                         <label>yLabel</label>
                         <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
