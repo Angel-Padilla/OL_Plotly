@@ -1,4 +1,4 @@
-from tools.configurations.config import Marker, Axis
+from tools.configurations.config import Marker
 from xml.etree.ElementTree import Element
 
 DEFAULT_TRACE_CONFIG:dict = {
@@ -10,7 +10,7 @@ DEFAULT_TRACE_CONFIG:dict = {
     "marker": Marker.CIRCLE,
     "width": 1,
     "legend": "generic legend",
-    "reference": [Axis.XMAIN, Axis.YMAIN],
+    "reference": ["main", "main"]
 }
 
 DEFAULT_PLOT_CONFIG:dict = {

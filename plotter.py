@@ -61,6 +61,8 @@ if __name__ == '__main__':
                                          y=_trace.Ydata,
                                          name=trace_config["legend"],
                                          line=_trace_line,
+                                         xaxis="x2" if trace_config["reference"][0] == "aux" else "x",
+                                         yaxis="y2" if trace_config["reference"][1] == "aux" else "y",
                                          ))
             #set plot title
             figure_title = _plot_config["title"]

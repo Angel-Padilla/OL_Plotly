@@ -1,0 +1,97 @@
+<?xml
+version = "1.0"
+encoding = "UTF-8"
+standalone = "yes"
+?>
+
+<!-- config file is written using and XML schema as follows:
+     1. a <cleanup> element
+-->
+<config>
+    <cleanup save="new">
+        <columns type="remove" headers="CommaSeparatedHeaderNamesToAffect">
+        <file>nameFileAffected | __all__</file>
+        </columns>
+        <rows type="keep" chunks="{0,1}">
+        <file>nameFileAffected | __all__</file>
+        </rows>
+    </cleanup>
+    <analysis></analysis> <!--TODO:-->
+    <plot>
+        <global>
+            <title override="false">test (#)</title>
+            <Axis>
+                <x>
+                    <label>A column</label>
+                    <range min="0" max="10"/>
+                    <auxAxis>
+                        <label>ITS DISABLED</label>
+                        <range min="-1" max="1"/>
+                    </auxAxis>
+                </x>
+                <y>
+                    <label>B column</label>
+                    <range min="0" max="100"/>
+                    <auxAxis>
+                        <label>D column</label>
+                        <range min="0" max="80"/>
+                    </auxAxis>
+                </y>
+            </Axis>
+            <trace name="B" type="scatter" over="A">   
+                <style>solid</style>      <!--auto randomizes sets solid line-->
+                <color>0x0000ff</color>        <!--auto randomizes the color-->
+                <marker>star</marker>      <!--auto randomizes the marker-->
+                <width>1</width>             <!--auto set the width to 1-->
+                <legend>B column</legend>     <!--auto sets the legend to the name of the column header-->
+                <reference x="main" y="main"/>               <!--plots the trace referenced to the reference xAxis-->
+            </trace>
+            <trace name="D" type="scatter" over="A">   
+                <style>dashed</style>      <!--auto randomizes sets solid line-->
+                <color>0x00ffff</color>        <!--auto randomizes the color-->
+                <marker>circle</marker>      <!--auto randomizes the marker-->
+                <width>1</width>             <!--auto set the width to 1-->
+                <legend>D column</legend>     <!--auto sets the legend to the name of the column header-->
+                <reference x="main" y="aux"/>               <!--plots the trace referenced to the reference xAxis-->
+            </trace>
+        </global>
+
+        <file name="test1">
+            <title iterative="false">test1</title>
+            <Axis>
+                <x>
+                    <label>T1 A column</label>
+                    <range min="0" max="10"/>
+                    <auxAxis>
+                        <label>T1 C column</label>
+                        <range min="0" max="15"/>
+                    </auxAxis>
+                </x>
+                <y>
+                    <label>B column</label>
+                    <range min="1" max="10"/>
+                    <auxAxis>
+                        <label>D column</label>
+                        <range min="0" max="9"/>
+                    </auxAxis>
+                </y>
+            </Axis>
+            <trace name="B" type="scatter" over="A">   
+                <line>solid</line>      <!--auto randomizes sets solid line-->
+                <color>0xffff00</color>        <!--auto randomizes the color-->
+                <marker>dot</marker>      <!--auto randomizes the marker-->
+                <width>1</width>             <!--auto set the width to 1-->
+                <legend>test 1 B column</legend>     <!--auto sets the legend to the name of the column header-->
+                <reference x="main" y="main"/>  
+            </trace>
+            <trace name="D" type="scatter" over="C">   
+                <line>solid</line>      <!--auto randomizes sets solid line-->
+                <color>0x0ff000</color>        <!--auto randomizes the color-->
+                <marker>star</marker>      <!--auto randomizes the marker-->
+                <width>1</width>             <!--auto set the width to 1-->
+                <legend>test 1 D column</legend>     <!--auto sets the legend to the name of the column header-->
+                <reference x="aux" y="aux"/>               <!--plots the trace referenced to the reference xAxis-->
+            </trace>
+        </file>
+    </plot>
+</config>
