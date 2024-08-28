@@ -21,12 +21,12 @@ standalone = "yes"
     <analysis></analysis> <!--TODO:-->
     <plot>
         <global>
-            <title iterative="true"|"false">TITLE</title>
+            <title override="true"|"false">TITLE</title>
             <Axis>
                 <x>
                     <label>xLabel</label>
                     <range min="minValue" | "auto" max="maxValue" | "auto"/>
-                    <auxAxis>
+                    <auxAxis active="true" | "false">
                         <label>xLabel</label>
                         <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
@@ -34,7 +34,7 @@ standalone = "yes"
                 <y>
                     <label>yLabel</label>
                     <range min="minValue" | "auto" max="maxValue" | "auto"/>
-                    <auxAxis>
+                    <auxAxis active="true" | "false">
                         <label>yLabel</label>
                         <range min="minValue" | "auto" max="maxValue" | "auto"/>
                     </auxAxis>
