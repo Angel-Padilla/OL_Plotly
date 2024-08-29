@@ -66,10 +66,66 @@ if __name__ == '__main__':
                                          ))
             #set plot title
             figure_title = _plot_config["title"]
-            fig.update_layout(title_text=figure_title)
+
+            PLOT_LAYOUT_CONFIG:dict = {}
+            PLOT_LAYOUT_CONFIG["title_text"] = figure_title
+
+            #configure MAIN X AXIS
+            MAIN_X_AXIS_CONFIG:dict = {}
+            MAIN_X_AXIS_CONFIG["title_text"] = _plot_config["xAxis"]["label"]
+            main_x_axis_autorange_type = get_autorange_type(_plot_config["xAxis"]["range"]) 
+            if main_x_axis_autorange_type != False:
+                MAIN_X_AXIS_CONFIG["autorange"] = main_x_axis_autorange_type
+            if main_x_axis_autorange_type != True:
+                MAIN_X_AXIS_CONFIG["range"] = [(int(bound) if bound != "auto" else None) for bound in _plot_config["xAxis"]["range"]]
+            
+            #configure MAIN Y AXIS
+            MAIN_Y_AXIS_CONFIG:dict = {}
+            MAIN_Y_AXIS_CONFIG["title_text"] = _plot_config["yAxis"]["label"]
+            MAIN_X_AXIS_CONFIG["side"] = "left"
+            main_y_axis_autorange_type = get_autorange_type(_plot_config["yAxis"]["range"]) 
+            if main_y_axis_autorange_type != False:
+                MAIN_Y_AXIS_CONFIG["autorange"] = main_y_axis_autorange_type
+            if main_y_axis_autorange_type != True:
+                MAIN_Y_AXIS_CONFIG["range"] = [(int(bound) if bound != "auto" else None) for bound in _plot_config["yAxis"]["range"]]
+
             #set main axis labels
-            fig.update_xaxes(title_text=_plot_config["xAxis"]["label"])
-            fig.update_yaxes(title_text=_plot_config["yAxis"]["label"])
+            PLOT_LAYOUT_CONFIG["xaxis"] = MAIN_X_AXIS_CONFIG
+            PLOT_LAYOUT_CONFIG["yaxis"] = MAIN_Y_AXIS_CONFIG
+
+            #Configure AUX X AXIS
+            if _plot_config["xAxis"]["aux"]["enabled"]:
+                AUX_X_AXIS_CONFIG:dict = {}
+                AUX_X_AXIS_CONFIG["side"] = "up"
+                AUX_X_AXIS_CONFIG["title_text"] = _plot_config["xAxis"]["aux"]["label"]
+                AUX_X_AXIS_CONFIG["overlaying"] = "x"
+                AUX_X_AXIS_CONFIG["tickmode"] = "sync"
+                aux_x_axis_autorange_type = get_autorange_type(_plot_config["xAxis"]["aux"]["range"]) 
+                if aux_x_axis_autorange_type != False:
+                    AUX_X_AXIS_CONFIG["autorange"] = main_x_axis_autorange_type
+                if main_x_axis_autorange_type != True:
+                    AUX_X_AXIS_CONFIG["range"] = [(int(bound) if bound != "auto" else None) for bound in _plot_config["xAxis"]["aux"]["range"]]
+
+                PLOT_LAYOUT_CONFIG["xaxis2"] = AUX_X_AXIS_CONFIG
+
+
+            #Configure AUX Y AXIS
+            if _plot_config["yAxis"]["aux"]["enabled"]:
+                AUX_Y_AXIS_CONFIG:dict = {}
+                AUX_Y_AXIS_CONFIG["side"] = "right"
+                AUX_Y_AXIS_CONFIG["title_text"] = _plot_config["yAxis"]["aux"]["label"]
+                AUX_Y_AXIS_CONFIG["overlaying"] = "y"
+                AUX_Y_AXIS_CONFIG["tickmode"] = "sync"
+                aux_y_axis_autorange_type = get_autorange_type(_plot_config["yAxis"]["aux"]["range"]) 
+                if aux_y_axis_autorange_type != False:
+                    AUX_Y_AXIS_CONFIG["autorange"] = aux_y_axis_autorange_type
+                if aux_y_axis_autorange_type != True:
+                    AUX_Y_AXIS_CONFIG["range"] = [(int(bound) if bound != "auto" else None) for bound in _plot_config["yAxis"]["aux"]["range"]]
+
+                PLOT_LAYOUT_CONFIG["yaxis2"] = AUX_Y_AXIS_CONFIG
+
+            fig.update_layout(PLOT_LAYOUT_CONFIG)
+
 
             #save html file
             pio.write_html(fig, file="{0}/{1}.html".format(args.directory,filename), auto_open=args.show)
