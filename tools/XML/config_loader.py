@@ -60,3 +60,23 @@ def load_config_from_XML(ROOT:XML.ElementTree, obj:plot, file:str = "global") ->
         obj.add_trace(**t_config)
 
     return
+
+def get_autorange_type(config_range:list[str]):
+    #Invalid range sets the autorange to true
+    min_auto:bool = False
+    if config_range.__len__() != 2:
+        return True 
+        
+    if config_range[0] != "auto":
+        if config_range[1] == "auto":
+            return "max"
+        else:
+            return False
+    else:
+        if config_range[1] == "auto":
+            return True
+        else:
+            return "min"
+        
+        
+
